@@ -14,9 +14,6 @@ const useStyles = makeStyles({
         boxShadow: "4px 0px 10px rgba(93, 109, 151, 0.1)",
         borderRadius: '10px',
     },
-    container: {
-        maxHeight: 463,
-    },
     tableHeaderText: {
         fontFamily: "Ubuntu",
         fontWeight: 400,
@@ -65,7 +62,8 @@ export const TableAppContainer = ({ rows, columns }) => {
                 <TableBody>
                     {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                         return (
-                            <TableRow className={classes.headerTableRow} hover role="checkbox" tabIndex={-1} key={row.code}>
+                            <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                                {/* className={classes.headerTableRow}  */}
                                 {columns.map((column) => {
                                     const value = row[column.id];
                                     return (

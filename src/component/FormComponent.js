@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { FormContainer } from '../container/FormContainer'
 import { InputContainer } from "../container/InputContainer";
+import { SendButtonComponent } from "./SendButtonComponent";
 
 export const FormComponent = () => {
     const { register, handleSubmit } = useForm({
@@ -16,11 +17,19 @@ export const FormComponent = () => {
             <FormContainer onSubmit={handleSubmit(onSubmit)}>
                 <InputContainer
                     ref={register}
-                    id='firstName'
+                    id='dateRegistration'
                     type='text'
-                    label='First Name'
-                    name='firstName' />
+                    label='Date Registration'
+                    name='dateRegistration' />
+                <InputContainer
+                    ref={register}
+                    id='dateLastActivity'
+                    type='text'
+                    label='Date Last Activity'
+                    name='dateLastActivity' />
+                <SendButtonComponent>Button</SendButtonComponent>
             </FormContainer>
+
         </>
     )
 }

@@ -6,7 +6,7 @@ export const InputContainer = React.forwardRef((props, ref) => {
         <TextField
             margin='normal'
             inputRef={ref}
-            variant='outlined'
+            // variant='outlined'
             fullWidth
             {...props}></TextField>)
 })
