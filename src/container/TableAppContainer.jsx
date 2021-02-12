@@ -60,7 +60,8 @@ export const TableAppContainer = ({ rows, columns }) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                    {/* .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) */}
+                    {rows.map((row) => {
                         return (
                             <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                                 {/* className={classes.headerTableRow}  */}
@@ -68,7 +69,8 @@ export const TableAppContainer = ({ rows, columns }) => {
                                     const value = row[column.id];
                                     return (
                                         <TableCell className={classes.headerBodyText} key={column.id} align={column.align}>
-                                            {column.format && typeof value === 'number' ? column.format(value) : value}
+                                            {/* {column.format && typeof value === 'number' ? column.format(value) : value} */}
+                                            {value}
                                         </TableCell>
                                     );
                                 })}

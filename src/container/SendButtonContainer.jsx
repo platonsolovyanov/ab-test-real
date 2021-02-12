@@ -15,11 +15,11 @@ export const SendButtonContainer = ({ children, props }) => {
         <Button
             className={styles.root}
             type='submit'
-            fullWidth
             variant='contained'
             color='primary'
             {...props}>
-            {children}
+            Send
+            {/* {children} */}
         </Button>
     )
 }

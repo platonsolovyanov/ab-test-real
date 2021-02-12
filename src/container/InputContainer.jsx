@@ -1,12 +1,26 @@
 import React from 'react'
 import { TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyle = makeStyles({
+    root: {
+        // marginLeft: 50
+
+    }
+})
 
 export const InputContainer = React.forwardRef((props, ref) => {
+    const styles = useStyle()
     return (
         <TextField
+            className={styles.root}
             margin='normal'
             inputRef={ref}
-            // variant='outlined'
-            fullWidth
-            {...props}></TextField>)
+            variant='outlined'
+            type="date"
+            InputLabelProps={{
+                shrink: true,
+            }}
+            {...props}
+        ></TextField>)
 })
