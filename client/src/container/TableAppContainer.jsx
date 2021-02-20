@@ -39,8 +39,6 @@ const useStyles = makeStyles({
 });
 export const TableAppContainer = ({ rows, columns }) => {
     const classes = useStyles();
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(rows.length);
 
     return (
         <Paper >
@@ -60,19 +58,22 @@ export const TableAppContainer = ({ rows, columns }) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {/* .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) */}
                     {rows.map((row) => {
                         return (
                             <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                                {/* className={classes.headerTableRow}  */}
                                 {columns.map((column) => {
-                                    const value = row[column.id];
-                                    return (
-                                        <TableCell className={classes.headerBodyText} key={column.id} align={column.align}>
-                                            {/* {column.format && typeof value === 'number' ? column.format(value) : value} */}
+                                    if (column.id != 'userId') {
+                                        const d = new Date(row[column.id])
+                                        const value = `${d.getFullYear()}-${d.getMonth()}-${d.getDay()}`
+                                        return (<TableCell className={classes.headerBodyText} key={column.id} align={column.align}>
                                             {value}
-                                        </TableCell>
-                                    );
+                                        </TableCell>)
+                                    } else {
+                                        const value = row[column.id]
+                                        return (<TableCell className={classes.headerBodyText} key={column.id} align={column.align}>
+                                            {value}
+                                        </TableCell>)
+                                    }
                                 })}
                             </TableRow>
                         );

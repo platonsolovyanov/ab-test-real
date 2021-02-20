@@ -1,22 +1,17 @@
 import { createReducer, createAction } from "@reduxjs/toolkit";
 
 const initialState = {
-    users: [
-    ]
+    users: []
 }
 
 export const addUser = createAction('ADD_USER')
-export const deleteUser = createAction('ADD_DELETE')
+export const getResponse = createAction('GET_RESPONSE')
 
 export const rows = createReducer(initialState, {
+    [getResponse]: function (state, action) {
+        return state = { ...state, users: action.payload }
+    },
     [addUser]: function (state, action) {
         return state = { ...state, users: [...state.users, action.payload] }
-        // console.log(action.payload)
-
-        // state : ...state, {action.payload}
-    },
-    [deleteUser]: function (state, action) {
-        // console.log("deleteUser")
-        // console.log(action.payload)
     }
 })
