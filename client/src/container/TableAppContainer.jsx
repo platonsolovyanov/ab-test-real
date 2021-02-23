@@ -6,6 +6,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { TextField } from '@material-ui/core';
+import { ButtonComponent } from '../component/ButtonComponent'
 
 const useStyles = makeStyles({
     root: {
@@ -38,49 +40,63 @@ const useStyles = makeStyles({
     }
 });
 export const TableAppContainer = ({ rows, columns }) => {
+
     const classes = useStyles();
 
     return (
-        <Paper >
-            <Table className={classes.root} stickyHeader aria-label="sticky table">
-                <TableHead>
-                    <TableRow >
-                        {columns.map((column) => (
-                            <TableCell
-                                className={classes.tableHeaderText}
-                                key={column.id}
-                                align={column.align}
-                                style={{ minWidth: column.minWidth }}
-                            >
-                                {column.label}
-                            </TableCell>
-                        ))}
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {rows.map((row) => {
-                        return (
-                            <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                                {columns.map((column) => {
-                                    if (column.id != 'userId') {
-                                        const d = new Date(row[column.id])
-                                        const value = `${d.getFullYear()}-${d.getMonth()}-${d.getDay()}`
-                                        return (<TableCell className={classes.headerBodyText} key={column.id} align={column.align}>
-                                            {value}
-                                        </TableCell>)
-                                    } else {
-                                        const value = row[column.id]
-                                        return (<TableCell className={classes.headerBodyText} key={column.id} align={column.align}>
-                                            {value}
-                                        </TableCell>)
-                                    }
-                                })}
-                            </TableRow>
-                        );
-                    })}
-                </TableBody>
-            </Table>
-        </Paper>
+        <>
+            <Paper >
+                <Table className={classes.root} stickyHeader aria-label="sticky table">
+                    <TableHead>
+                        <TableRow >
+                            {columns.map((column) => (
+                                <TableCell
+                                    className={classes.tableHeaderText}
+                                    key={column.id}
+                                    align={column.align}
+                                    style={{ minWidth: column.minWidth }}
+                                >
+                                    {column.label}
+                                </TableCell>
+                            ))}
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {rows.map((row) => {
+                            return (
+                                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                                    {columns.map((column) => {
+                                        if (column.id != 'userId') {
+
+                                            const d = new Date(row[column.id])
+
+                                            const value = `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`
+
+                                            return (
+                                                <TableCell className={classes.headerBodyText} key={column.id} align={column.align}>
+                                                    {value}
+                                                </TableCell>
+                                                // <TextField defaultValue={value}> {value}</TextField>
+                                            )
+                                        } else {
+
+                                            const value = row[column.id]
+
+                                            return (
+                                                <TableCell className={classes.headerBodyText} key={column.id} align={column.align}>
+                                                    {value}
+                                                </TableCell>
+                                            )
+                                        }
+                                    })}
+                                </TableRow>
+                            );
+                        })}
+                    </TableBody>
+                </Table>
+            </Paper>
+            <ButtonComponent />
+        </>
     );
 }
 

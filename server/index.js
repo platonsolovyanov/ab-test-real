@@ -4,10 +4,7 @@ const app = express()
 
 const PORT = 3001;
 
-
-// let query = "SELECT * FROM heroku_9f3e67f39dffa79.data;"
 let query = "SELECT * FROM heroku_9f3e67f39dffa79.data;"
-let formData = "SELECT DATE_FORMAT(dateRegistration, '%d/%m/%Y %k:%i:%s');"
 
 app.get('/get', (req, res) => {
     db.query(query, (err, result) => {

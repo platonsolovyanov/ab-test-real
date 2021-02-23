@@ -24,8 +24,18 @@ export const FormComponent = () => {
         mode: 'onBlur'
     });
 
+    const validDate = (date) => {
+
+        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+    }
+
     const onSubmit = (data) => {
-        dispatch(addUser({ userId: userId + 1, dateRegistration: data.dateRegistration, dateLastActivity: data.dateLastActivity }))
+        const dateReg = new Date(data.dateRegistration);
+        const d1 = validDate(dateReg)
+        const dateLast = new Date(data.dateLastActivity);
+        const d2 = validDate(dateLast)
+
+        dispatch(addUser({ userId: userId + 1, dateRegistration: d1, dateLastActivity: d2 }))
     }
     return (
         <>
