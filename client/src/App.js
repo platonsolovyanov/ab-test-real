@@ -1,10 +1,9 @@
 import React from 'react'
 import { TableAppComponet } from "./component/TableAppComponet";
 import { makeStyles } from '@material-ui/core/styles';
-import { FormComponent } from './component/FormComponent'
+import { InputFormComponent } from './component/InputFormComponent'
 import { useDispatch } from 'react-redux';
 import { getResponse } from './redux/TableApp/reduser'
-import { Input, TextField } from '@material-ui/core';
 
 
 const useStyle = makeStyles({
@@ -25,8 +24,6 @@ const useStyle = makeStyles({
   }
 })
 
-
-
 export const App = () => {
 
   const styles = useStyle()
@@ -40,11 +37,8 @@ export const App = () => {
   return (
     <div className={styles.root}>
       <div className={styles.wrapper} >
-        {/* <Input className={styles.input} input></Input> */}
-        <TextField className={styles.input}></TextField>
-        <FormComponent />
+        <InputFormComponent />
         <TableAppComponet />
-
       </div >
     </div>
   )

@@ -18,7 +18,7 @@ export const SendButtonContainer = ({ children, props }) => {
             variant='contained'
             color='primary'
             {...props}>
-            Send
+            Добавить
             {/* {children} */}
         </Button>
     )

@@ -20,7 +20,7 @@ export const InputContainer = React.forwardRef((props, ref) => {
 
             margin='normal'
             inputRef={ref}
-            // variant='outlined'
+            variant='outlined'
             type="date"
             defaultValue={'2000-01-11'}
             // InputLabelProps={{
