@@ -1,41 +1,39 @@
 const express = require('express');
-const db = require('./config/db');
+const cors = require('cors');
+const pool = require('./config/db');
 const app = express()
 
-const PORT = 3001;
+const PORT = 80;
+
+app.use(cors())
+app.use(express.json())
 
 let query = "SELECT * FROM heroku_9f3e67f39dffa79.data;"
+let queryPost = "INSERT INTO `heroku_9f3e67f39dffa79`.`data` (`userId`, `dateRegistration`, `dateLastActivity`) VALUES (?,?,?);"
+
 
 app.get('/get', (req, res) => {
-    db.query(query, (err, result) => {
-        if (err) {
-            console.log(err)
-        }
-        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    pool.query(query, (err, result) => {
+        if (err) throw err;
         res.send(result)
-
     })
 })
 
-function handleDisconnect() {
-    db.connect(function (err) {
-        if (err) {
-            console.log('error when connecting to db:', err);
-            setTimeout(handleDisconnect, 2000);
-        }
-    });
+app.post('/post', (req, res) => {
 
-    db.on('error', function (err) {
-        console.log('db error', err);
-        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-            handleDisconnect();
-        } else {
-            throw err;
-        }
-    });
-}
-
-handleDisconnect();
+    req.body.map(el => {
+        console.log(el)
+        const userId = el.userId
+        const dateRegistration = el.dateRegistration
+        const dateLastActivity = el.dateLastActivity
+        pool.query(queryPost, [userId, dateRegistration, dateLastActivity], (err, result) => {
+            if (err) {
+                console.log(err)
+            }
+            console.log(result)
+        })
+    })
+})
 
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server running on port ${PORT}`)
