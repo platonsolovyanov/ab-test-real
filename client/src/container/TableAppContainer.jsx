@@ -5,6 +5,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { InputRefComponent } from '../component/InputRefComponent'
 
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { ButtonComponent } from '../component/ButtonComponent'
@@ -42,16 +43,20 @@ const useStyles = makeStyles({
         }
     }
 });
-const Input = withStyles({
-    root: {
-        width: '70px',
-        ".MuiInputBase-input": {
-            width: '70px'
-        }
-    }
-})(TextField);
 
-{/* <TextField */ }
+// React.forwardRef((props, ref) => 
+
+// const Input = React.forwardRef((props, ref) => {
+//     withStyles({
+//         root: {
+//             width: '70px',
+//             ".MuiInputBase-input": {
+//                 width: '70px'
+//             }
+//         }
+//     })(TextField);
+// }
+
 
 // margin='normal'
 // inputRef={ref}
@@ -62,8 +67,8 @@ const Input = withStyles({
 //     shrink: true,
 // }}
 // {...props}
-{/* >
-</TextField> */}
+/* >
+</TextField> */
 
 // const Input = withStyles({
 //     root: {
@@ -95,16 +100,16 @@ export const TableAppContainer = ({ handleSubmit, inputDataValue, onSubmit, rows
 
 
 
-        console.log(`${month}`.length == 1)
+        // console.log(`${month}`.length == 1)
 
         if (`${month}`.length == 1) {
             const value = `${year}-0${month + 1}-${day}`
             // console.log(value)
-            console.log('asdasd')
+            // console.log('asdasd')
             return value
         } else {
             const value = `${year}-${month + 1}-${day}`
-            console.log(value)
+            // console.log(value)
             return value
         }
         // let value
@@ -140,26 +145,14 @@ export const TableAppContainer = ({ handleSubmit, inputDataValue, onSubmit, rows
 
                                                 const d = new Date(row[column.id])
                                                 const value = aaaa(d)
-                                                // console.log(value)
-                                                // const year = d.getFullYear();
-                                                // const month = d.getMonth() + 1;
-                                                // const day = d.getDate();
 
-                                                // if (month.length < 2) {
-                                                //     const value = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
-                                                //     return value
-                                                // } else {
-                                                //     const value = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
-                                                //     return value
-                                                // }
-                                                // let value
-                                                // month.length < 2 ? value = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}` : value = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
-                                                // const value = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`
 
                                                 return (
                                                     <TableCell className={classes.headerBodyText} key={column.id} align={column.align}>
                                                         {/* <Input name="date" ref={inputDataValue} width={'10px'} className={classes.tableHeaderText} defaultValue={value}></Input> */}
-                                                        <TextField name="date" width={'10px'} className={classes.tableHeaderText} ref={inputDataValue} defaultValue={value} type="date"></TextField>
+                                                        {/* <TextField name="date" width={'10px'} className={classes.tableHeaderText} ref={inputDataValue} defaultValue={value} type="date"></TextField> */}
+                                                        {/* <InputRefComponent name="date" className={classes.tableHeaderText} ref={inputDataValue} value={value} /> */}
+                                                        <input ref={inputDataValue} defaultValue={value} type="date" />
                                                         {/* <Inout1 value={value} inputDataValue={inputDataValue}></Inout1> */}
                                                     </TableCell>
                                                 )
