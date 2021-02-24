@@ -19,7 +19,7 @@ export const SendButtonContainer = ({ children, props }) => {
             color='primary'
             {...props}>
             Send
-            {/* {children} */}
+            
         </Button>
     )
 }

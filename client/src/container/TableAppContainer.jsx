@@ -7,7 +7,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { TextField } from '@material-ui/core';
-import { ButtonComponent } from '../component/ButtonComponent'
+import { PostButtonComponent } from '../component/PostButtonComponent'
+import { DeleteButtonComponent } from '../component/DeleteButtonComponent'
+import { ButtonCalculateComponent } from '../component/ButtonCalculateComponent'
 
 const useStyles = makeStyles({
     root: {
@@ -41,6 +43,15 @@ const useStyles = makeStyles({
 });
 export const TableAppContainer = ({ rows, columns }) => {
 
+    // const postButton = () => {
+    //     fetch('http://localhost/post', {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify(users),
+    //     }).then((data) => data.json());
+
+    // }
+
     const classes = useStyles();
 
     return (
@@ -64,7 +75,7 @@ export const TableAppContainer = ({ rows, columns }) => {
                     <TableBody>
                         {rows.map((row) => {
                             return (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                                <TableRow hover role="checkbox" tabIndex={-1} key={row.userId}>
                                     {columns.map((column) => {
                                         if (column.id != 'userId') {
 
@@ -76,7 +87,6 @@ export const TableAppContainer = ({ rows, columns }) => {
                                                 <TableCell className={classes.headerBodyText} key={column.id} align={column.align}>
                                                     {value}
                                                 </TableCell>
-                                                // <TextField defaultValue={value}> {value}</TextField>
                                             )
                                         } else {
 
@@ -95,7 +105,9 @@ export const TableAppContainer = ({ rows, columns }) => {
                     </TableBody>
                 </Table>
             </Paper>
-            <ButtonComponent />
+            <PostButtonComponent />
+            <DeleteButtonComponent />
+            <ButtonCalculateComponent />
         </>
     );
 }

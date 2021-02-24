@@ -20,7 +20,6 @@ export const TableAppComponet = () => {
     return (
         <>
             <TableAppContainer columns={columns} rows={rows} />
-            {/* <button onClick={() => { postButton({ adsa: 'asdasd12' }) }}>button</button> */}
         </>
     )
 }

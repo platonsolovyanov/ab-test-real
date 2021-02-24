@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { FormComponent } from './component/FormComponent'
 import { useDispatch } from 'react-redux';
 import { getResponse } from './redux/TableApp/reduser'
-import { Input, TextField } from '@material-ui/core';
+// import { Input, TextField } from '@material-ui/core';
 
 
 const useStyle = makeStyles({
@@ -41,7 +41,7 @@ export const App = () => {
     <div className={styles.root}>
       <div className={styles.wrapper} >
         {/* <Input className={styles.input} input></Input> */}
-        <TextField className={styles.input}></TextField>
+        {/* <TextField className={styles.input}></TextField> */}
         <FormComponent />
         <TableAppComponet />
 

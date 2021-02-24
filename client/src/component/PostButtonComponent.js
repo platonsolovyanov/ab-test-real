@@ -1,8 +1,8 @@
 import React from 'react'
-import { ButtonContainer } from '../container/ButtonContainer'
+import { PostButtonContainer } from '../container/PostButtonContainer'
 import { useSelector } from 'react-redux';
 
-export const ButtonComponent = () => {
+export const PostButtonComponent = () => {
     const users = useSelector(state => state.rows.users)
 
     const postButton = () => {
@@ -12,10 +12,13 @@ export const ButtonComponent = () => {
             body: JSON.stringify(users),
         }).then((data) => data.json());
 
+        if (users.length !== 0) {
+            window.location.reload()
+        }
     }
     return (
         <div>
-            <ButtonContainer postButton={(users) => { postButton(users) }} />
+            <PostButtonContainer fetchFunc={(users) => { postButton(users) }} />
         </div>
     )
 }
