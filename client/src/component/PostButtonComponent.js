@@ -3,7 +3,7 @@ import { PostButtonContainer } from '../container/PostButtonContainer'
 import { useSelector } from 'react-redux';
 
 export const PostButtonComponent = () => {
-    const users = useSelector(state => state.rows.users)
+    const users = useSelector(({ tableReducer }) => tableReducer.users)
 
     const postButton = () => {
         fetch('http://localhost/post', {

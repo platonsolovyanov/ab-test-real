@@ -15,7 +15,7 @@ const columns = [
 ];
 
 export const TableAppComponet = () => {
-    const rows = useSelector(({ rows }) => rows.users)
+    const rows = useSelector(({ tableReducer }) => tableReducer.users)
 
     return (
         <>

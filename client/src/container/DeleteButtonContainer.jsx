@@ -4,7 +4,16 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        marginTop: "10px"
+        marginLeft: "10px",
+        marginTop: "10px",
+        background: "#4A9DFF",
+        borderRadius: "10px",
+        fontFamily: "Ubuntu",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: "14px",
+        lineHeight: "16px",
+        color: "#FFFFFF",
     }
 }))
 

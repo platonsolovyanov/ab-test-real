@@ -4,7 +4,15 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        // margin: theme.spacing(3, 0, 2)
+        marginLeft: '50px',
+        background: "#4A9DFF",
+        borderRadius: "10px",
+        fontFamily: "Ubuntu",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: "14px",
+        lineHeight: "16px",
+        color: "#FFFFFF",
     }
 }))
 
@@ -18,7 +26,7 @@ export const SendButtonContainer = ({ children, props }) => {
             variant='contained'
             color='primary'
             {...props}>
-            Send
+            Add
             
         </Button>
     )

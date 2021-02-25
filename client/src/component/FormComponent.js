@@ -1,8 +1,8 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import { FormContainer } from '../container/FormContainer'
-import { InputContainer } from "../container/InputContainer";
-import { SendButtonComponent } from "./SendButtonComponent";
+import { InputComponent } from "../component/InputComponent";
+import { AddButtonComponent } from "./AddButtonComponent";
 import { makeStyles } from "@material-ui/core/styles";
 import { addUser } from '../redux/TableApp/reduser'
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,7 +19,7 @@ export const FormComponent = () => {
     const styles = useStyles()
 
     const dispatch = useDispatch()
-    const userId = useSelector((data) => data.rows.users.length)
+    const userId = useSelector((data) => data.tableReducer.users.length)
     const { register, handleSubmit } = useForm({
         mode: 'onBlur'
     });
@@ -40,17 +40,17 @@ export const FormComponent = () => {
     return (
         <>
             <FormContainer className={styles.root} onSubmit={handleSubmit(onSubmit)}>
-                <InputContainer
+                <InputComponent
                     ref={register}
                     id='dateRegistration'
                     label='Date Registration'
                     name='dateRegistration' />
-                <InputContainer
+                <InputComponent
                     ref={register}
                     id='dateLastActivity'
                     label='Date Last Activity'
                     name='dateLastActivity' />
-                <SendButtonComponent>Button</SendButtonComponent>
+                <AddButtonComponent />
             </FormContainer>
 
         </>

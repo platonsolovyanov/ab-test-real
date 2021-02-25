@@ -5,11 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyle = makeStyles({
     root: {
-        fontFamily: 'Ubuntu',
-        fontWeight: 300,
-        fontSize: '14px',
-        lineHeight: '16px',
-        color: '#5D6D97',
+        marginLeft: "30px",
     }
 })
 
@@ -17,15 +13,12 @@ export const InputContainer = React.forwardRef((props, ref) => {
     const styles = useStyle()
     return (
         <TextField
-
+            className={styles.root}
             margin='normal'
             inputRef={ref}
-            // variant='outlined'
+            variant='outlined'
             type="date"
             defaultValue={'2021-02-24'}
-            // InputLabelProps={{
-            //     shrink: true,
-            // }}
             {...props}
         >
         </TextField>)

@@ -4,22 +4,35 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        marginTop: "10px"
+        marginLeft: "10px",
+        marginTop: "10px",
+        background: "#4A9DFF",
+        borderRadius: "10px",
+        fontFamily: "Ubuntu",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: "14px",
+        lineHeight: "16px",
+        color: "#FFFFFF",
     }
 }))
 
-export const ButtonCalculateContainer = ({ fetchFunc }) => {
+export const ButtonCalculateContainer = ({ users, installAppSevenDays, lastActivSevenDays }) => {
+    const rollingRetentionSevenDays = (usersArr = users) => {
+        if (users !== undefined && users.length !== 0) {
+            const a = lastActivSevenDays(users)
+            const b = installAppSevenDays(users)
+            const s = a / b * 100
+            return s
+        }
+        return 0
+    }
     const style = useStyles()
 
-    const getRollingRetentionSevenDays = () => {
-        fetch('http://localhost/get_rolling_seven_days', { method: 'GET' })
-            .then(response => response.json())
-            .then(res => console.log(res))
-    }
 
     return (
         <>
-            <Button onClick={() => getRollingRetentionSevenDays()} className={style.root} variant='contained' color='primary'>Calculate</Button>
+            <Button onClick={() => { rollingRetentionSevenDays() }} className={style.root} variant='contained' color='primary'>Calculate</Button>
         </>
     )
 }

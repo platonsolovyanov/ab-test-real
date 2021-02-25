@@ -39,18 +39,22 @@ const useStyles = makeStyles({
         "&:last-child": {
             borderRadius: '10px',
         }
+    },
+    boxButton: {
+        display: 'flex',
+    },
+    calculateText: {
+        fontFamily: "Ubuntu",
+        fontWeight: "normal",
+        fontStyle: "normal",
+        lineHeight: "23px",
+        fontSize: "20px",
+        color: "#3C5AA8",
+        textTransform: "uppercase",
+        opacity: "0.4"
     }
 });
 export const TableAppContainer = ({ rows, columns }) => {
-
-    // const postButton = () => {
-    //     fetch('http://localhost/post', {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify(users),
-    //     }).then((data) => data.json());
-
-    // }
 
     const classes = useStyles();
 
@@ -105,9 +109,12 @@ export const TableAppContainer = ({ rows, columns }) => {
                     </TableBody>
                 </Table>
             </Paper>
-            <PostButtonComponent />
-            <DeleteButtonComponent />
-            <ButtonCalculateComponent />
+            <h1 className={classes.calculateText}>Calculate: { }</h1>
+            <div className={classes.boxButton}>
+                <PostButtonComponent />
+                <DeleteButtonComponent />
+                <ButtonCalculateComponent />
+            </div>
         </>
     );
 }

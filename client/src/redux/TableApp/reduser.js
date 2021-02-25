@@ -7,7 +7,7 @@ const initialState = {
 export const addUser = createAction('ADD_USER')
 export const getResponse = createAction('GET_RESPONSE')
 
-export const rows = createReducer(initialState, {
+export const tableReducer = createReducer(initialState, {
     [getResponse]: function (state, action) {
         return state = { ...state, users: action.payload }
     },
