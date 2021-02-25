@@ -13,7 +13,9 @@ export const PostButtonComponent = () => {
         }).then((data) => data.json());
 
         if (users.length !== 0) {
-            window.location.reload()
+            setTimeout(() => {
+                window.location.reload()
+            }, 300)
         }
     }
     return (

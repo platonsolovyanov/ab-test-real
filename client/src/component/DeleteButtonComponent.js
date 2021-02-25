@@ -9,8 +9,9 @@ export const DeleteButtonComponent = () => {
         })
             .then(res => console.log(res))
 
-        window.location.reload();
-
+        setTimeout(() => {
+            window.location.reload()
+        }, 300)
     }
     return (
         <div>
