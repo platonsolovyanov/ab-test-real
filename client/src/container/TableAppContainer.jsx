@@ -6,10 +6,12 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { TextField } from '@material-ui/core';
+
 import { PostButtonComponent } from '../component/PostButtonComponent'
 import { DeleteButtonComponent } from '../component/DeleteButtonComponent'
 import { ButtonCalculateComponent } from '../component/ButtonCalculateComponent'
+
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles({
     root: {
@@ -55,6 +57,9 @@ const useStyles = makeStyles({
     }
 });
 export const TableAppContainer = ({ rows, columns }) => {
+
+    const calc = useSelector(({ buttonReducer }) => buttonReducer.calculateSevenDays)
+
 
     const classes = useStyles();
 
@@ -109,7 +114,7 @@ export const TableAppContainer = ({ rows, columns }) => {
                     </TableBody>
                 </Table>
             </Paper>
-            <h1 className={classes.calculateText}>Calculate: { }</h1>
+            <h1 className={classes.calculateText}>Rolling Retention 7 day: {calc}</h1>
             <div className={classes.boxButton}>
                 <PostButtonComponent />
                 <DeleteButtonComponent />

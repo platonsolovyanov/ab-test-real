@@ -3,7 +3,9 @@ import { ButtonCalculateContainer } from '../container/ButtonCalculateContainer'
 import { useSelector } from 'react-redux';
 
 
+
 export const ButtonCalculateComponent = () => {
+
     const users = useSelector(({ tableReducer }) => tableReducer.users)
 
 
@@ -44,6 +46,3 @@ export const ButtonCalculateComponent = () => {
         </div>
     )
 }
-
-
-// fetchFunc={getRollingRetentionSevenDays} 

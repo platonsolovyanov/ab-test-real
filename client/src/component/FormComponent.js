@@ -1,7 +1,8 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import { FormContainer } from '../container/FormContainer'
-import { InputComponent } from "../component/InputComponent";
+import { InputContainer } from "../container/InputContainer";
+
 import { AddButtonComponent } from "./AddButtonComponent";
 import { makeStyles } from "@material-ui/core/styles";
 import { addUser } from '../redux/TableApp/reduser'
@@ -40,12 +41,12 @@ export const FormComponent = () => {
     return (
         <>
             <FormContainer className={styles.root} onSubmit={handleSubmit(onSubmit)}>
-                <InputComponent
+                <InputContainer
                     ref={register}
                     id='dateRegistration'
                     label='Date Registration'
                     name='dateRegistration' />
-                <InputComponent
+                <InputContainer
                     ref={register}
                     id='dateLastActivity'
                     label='Date Last Activity'

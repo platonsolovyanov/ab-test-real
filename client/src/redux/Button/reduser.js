@@ -1,7 +1,7 @@
 import { createReducer, createAction } from "@reduxjs/toolkit";
 
 const initialState = {
-    calculateSevenDays: null
+    calculateSevenDays: 0
 }
 
 export const calculate = createAction('CALCULATE')

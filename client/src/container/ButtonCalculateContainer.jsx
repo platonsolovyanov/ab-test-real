@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { useDispatch } from 'react-redux';
+import { calculate } from '../redux/Button/reduser'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,14 +20,15 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const ButtonCalculateContainer = ({ users, installAppSevenDays, lastActivSevenDays }) => {
+    const dispatch = useDispatch()
     const rollingRetentionSevenDays = (usersArr = users) => {
         if (users !== undefined && users.length !== 0) {
-            const a = lastActivSevenDays(users)
-            const b = installAppSevenDays(users)
-            const s = a / b * 100
-            return s
+            const last = lastActivSevenDays(users)
+            const install = installAppSevenDays(users)
+            const calc = last / install * 1
+            return dispatch(calculate(calc))
         }
-        return 0
+        return dispatch(calculate(0))
     }
     const style = useStyles()
 
