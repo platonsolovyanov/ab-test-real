@@ -6,7 +6,7 @@ export const PostButtonComponent = () => {
     const users = useSelector(({ tableReducer }) => tableReducer.users)
 
     const postButton = () => {
-        fetch('http://localhost/post', {
+        fetch('https://ab-test-database.herokuapp.com/api/post', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(users),

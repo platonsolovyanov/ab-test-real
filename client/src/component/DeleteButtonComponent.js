@@ -4,7 +4,7 @@ import { DeleteButtonContainer } from '../container/DeleteButtonContainer'
 export const DeleteButtonComponent = () => {
     const deleteButton = () => {
 
-        fetch('http://localhost/delete', {
+        fetch('https://ab-test-database.herokuapp.com/api/delete', {
             method: 'DELETE',
         })
             .then(res => console.log(res))

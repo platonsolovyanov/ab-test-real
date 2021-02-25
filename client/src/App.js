@@ -31,7 +31,7 @@ export const App = () => {
 
   const dispatch = useDispatch()
 
-  fetch('http://localhost/get', { method: 'GET' })
+  fetch('https://ab-test-database.herokuapp.com/api/get', { method: 'GET' })
     .then(response => response.json())
     .then(json => dispatch(getResponse(json)))
     .catch(err => console.log(err))
