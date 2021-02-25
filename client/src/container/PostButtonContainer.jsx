@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const PostButtonContainer = ({ fetchFunc }) => {
     const style = useStyles()
+
     return (
         <div>
             <Button className={style.root} variant='contained' color='primary' onClick={() => { fetchFunc() }}>Save</Button>

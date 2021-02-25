@@ -20,7 +20,9 @@ export const FormComponent = () => {
     const styles = useStyles()
 
     const dispatch = useDispatch()
+
     const userId = useSelector((data) => data.tableReducer.users.length)
+
     const { register, handleSubmit } = useForm({
         mode: 'onBlur'
     });
@@ -32,8 +34,11 @@ export const FormComponent = () => {
 
     const onSubmit = (data) => {
         const dateReg = new Date(data.dateRegistration);
+
         const d1 = validDate(dateReg)
+
         const dateLast = new Date(data.dateLastActivity);
+
         const d2 = validDate(dateLast)
 
         dispatch(addUser({ userId: userId + 1, dateRegistration: d1, dateLastActivity: d2 }))

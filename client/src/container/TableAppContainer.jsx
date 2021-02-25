@@ -1,5 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import { useSelector } from 'react-redux';
+
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,8 +12,6 @@ import TableRow from '@material-ui/core/TableRow';
 import { PostButtonComponent } from '../component/PostButtonComponent'
 import { DeleteButtonComponent } from '../component/DeleteButtonComponent'
 import { ButtonCalculateComponent } from '../component/ButtonCalculateComponent'
-
-import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles({
     root: {
@@ -114,7 +114,7 @@ export const TableAppContainer = ({ rows, columns }) => {
                     </TableBody>
                 </Table>
             </Paper>
-            <h1 className={classes.calculateText}>Rolling Retention 7 day: {calc}</h1>
+            <h1 className={classes.calculateText}>Rolling Retention 7 day: {calc} %</h1>
             <div className={classes.boxButton}>
                 <PostButtonComponent />
                 <DeleteButtonComponent />

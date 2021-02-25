@@ -21,12 +21,19 @@ const useStyles = makeStyles((theme) => ({
 
 export const ButtonCalculateContainer = ({ users, installAppSevenDays, lastActivSevenDays }) => {
     const dispatch = useDispatch()
+
     const rollingRetentionSevenDays = (usersArr = users) => {
         if (users !== undefined && users.length !== 0) {
             const last = lastActivSevenDays(users)
+
             const install = installAppSevenDays(users)
-            const calc = last / install * 1
-            return dispatch(calculate(calc))
+
+            const calc = last / install * 100
+
+            if (calc == "Infinity") {
+                return dispatch(calculate(0))
+            }
+            return dispatch(calculate(calc.toFixed(2)))
         }
         return dispatch(calculate(0))
     }

@@ -2,8 +2,8 @@ import React from 'react'
 import { DeleteButtonContainer } from '../container/DeleteButtonContainer'
 
 export const DeleteButtonComponent = () => {
-
     const deleteButton = () => {
+
         fetch('http://localhost/delete', {
             method: 'DELETE',
         })
